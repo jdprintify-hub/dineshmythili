@@ -47,7 +47,7 @@
   "couplePhotos": [
     {
       "image": "/src/assets/couple_photo/mylove.png",
-      "caption": "Athan periya Gift na irukenae ithuku mela ena Venum Soluuuu"
+      "caption": "Athan unaku periya Gift na irukenae ithuku mela ena Venum Soluuuu"
     }
   ],
   "prosCons": [
@@ -83,7 +83,7 @@
       "duration": "3:33",
       "album": "Amaran",
       "artist": "",
-      "cover": "/src/assets/album-covers/vennilavu Amaran.jpeg",
+      "cover": "/src/assets/album-covers/amaran.jpeg",
       "audio": "/src/assets/songs/Amaran.mp3"
     },
     {

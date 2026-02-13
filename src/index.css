@@ -816,10 +816,18 @@ body {
   }
 
   .photo-frame {
-    height: 150px;
-    margin-bottom: 0.8rem;
-    border-radius: 10px;
-  }
+  height: 150px;
+  margin: 0 auto 0.8rem auto;   /* CENTER align */
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;      /* horizontal center */
+  align-items: center;          /* vertical center */
+
+  border: 3px solid #c79a5b;    /* BORDER */
+  background: #fff;
+}
+
 
   .photo-caption {
     font-size: 0.9rem;
