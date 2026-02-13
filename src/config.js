@@ -27,7 +27,7 @@ import aasaCover from "./assets/album-covers/aasa_orave.jpg";
 import mundasCover from "./assets/album-covers/mundasupatti.jpg";
 
 import song1 from "./assets/songs/Amaran.mp3";
-import song2 from "./assets/songs/Oorum Blood.mp3";
+import song2 from "./assets/songs/Oorum-Blood.mp3";
 import song3 from "./assets/songs/unakagathanae.mp3";
 import song4 from "./assets/songs/Aasa-Orave.mp3";
 import song5 from "./assets/songs/kadhal-kanave.mp3";
@@ -55,7 +55,7 @@ const pathMap = {
 	"/src/assets/album-covers/aasa_orave.jpg": aasaCover,
 	"/src/assets/album-covers/mundasupatti.jpg": mundasCover,
 	"/src/assets/songs/Amaran.mp3": song1,
-	"/src/assets/songs/Oorum Blood.mp3": song2,
+	"/src/assets/songs/Oorum-Blood.mp3": song2,
 	"/src/assets/songs/unakagathanae.mp3": song3,
 	"/src/assets/songs/Aasa-Orave.mp3": song4,
 	"/src/assets/songs/kadhal-kanave.mp3": song5
