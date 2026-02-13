@@ -1,6 +1,6 @@
 import userConfig from "../config.json" with { type: "json" };
 
-// Import assets so Vite resolves them to correct production URLs
+// Import assets - Vite will process these and create correct URLs automatically
 import cuteBear from "./assets/cute-bear.gif";
 import musicBear from "./assets/music-bear.gif";
 import comfortBear from "./assets/comfort-bear.gif";
@@ -20,7 +20,7 @@ import gift3 from "./assets/gift/gift3.jpg";
 
 import coupleMylove from "./assets/couple_photo/mylove.png";
 
-import amaranCover from "./assets/album-covers/amaran.jpeg";
+import amaranCover from "./assets/album-covers/amaran.jpg";
 import dudeCover from "./assets/album-covers/Dude.jpg";
 import katCover from "./assets/album-covers/katradhu-tamizh.jpg";
 import aasaCover from "./assets/album-covers/aasa_orave.jpg";
@@ -32,7 +32,9 @@ import song3 from "./assets/songs/unakagathanae.mp3";
 import song4 from "./assets/songs/Aasa-Orave.mp3";
 import song5 from "./assets/songs/kadhal-kanave.mp3";
 
-const pathMap = {
+// Map config.json paths to imported assets
+// This ensures Vite-processed URLs are used in production
+const assetMap = {
 	"/src/assets/cute-bear.gif": cuteBear,
 	"/src/assets/music-bear.gif": musicBear,
 	"/src/assets/comfort-bear.gif": comfortBear,
@@ -49,7 +51,7 @@ const pathMap = {
 	"/src/assets/gift/gift2.jpg": gift2,
 	"/src/assets/gift/gift3.jpg": gift3,
 	"/src/assets/couple_photo/mylove.png": coupleMylove,
-	"/src/assets/album-covers/amaran.jpeg": amaranCover,
+	"/src/assets/album-covers/amaran.jpg": amaranCover,
 	"/src/assets/album-covers/Dude.jpg": dudeCover,
 	"/src/assets/album-covers/katradhu-tamizh.jpg": katCover,
 	"/src/assets/album-covers/aasa_orave.jpg": aasaCover,
@@ -61,22 +63,30 @@ const pathMap = {
 	"/src/assets/songs/kadhal-kanave.mp3": song5
 };
 
-function replacePaths(value) {
+function resolveAssets(value) {
 	if (typeof value === "string") {
-		return pathMap[value] || value;
+		return assetMap[value] || value;
 	}
 	if (Array.isArray(value)) {
-		return value.map(replacePaths);
+		return value.map(resolveAssets);
 	}
 	if (value && typeof value === "object") {
-		const out = {};
-		for (const k of Object.keys(value)) {
-			out[k] = replacePaths(value[k]);
+		const resolved = {};
+		for (const key of Object.keys(value)) {
+			resolved[key] = resolveAssets(value[key]);
 		}
-		return out;
+		return resolved;
 	}
 	return value;
 }
 
-// Create a resolved config where asset paths are replaced by Vite-resolved URLs
-export const config = replacePaths(userConfig);
+/**
+ * Configuration object with all assets properly resolved
+ * 
+ * In development: Assets are served with their development URLs
+ * In production (Netlify): Assets are hashed and placed in dist/assets/
+ * 
+ * This happens automatically because we import assets at the top,
+ * and the assetMap resolves config.json paths to these imports.
+ */
+export const config = resolveAssets(userConfig);

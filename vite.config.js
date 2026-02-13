@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    // Ensure assets are included in the build
+    assetsDir: 'assets',
+    assetsInlineLimit: 4096, // Inline small assets, but process larger ones
     rollupOptions: {
       output: {
         manualChunks: (id) => {
